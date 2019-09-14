@@ -125,26 +125,20 @@ img {
   margin-bottom: 1.45rem;
 }
 ul {
-  margin-left: 1.45rem;
+  margin-left: 0;
   margin-right: 0;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 1.45rem;
+  margin-bottom: 0;
   list-style-position: outside;
   list-style-image: none;
 }
 ol {
-  margin-left: 1.45rem;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.45rem;
+  margin: 0;
+  padding: 0;
   list-style-position: outside;
   list-style-image: none;
 }
@@ -172,7 +166,38 @@ noscript {
 }
 
 .section {
-  height: calc(100vh - 8rem);
+  height: calc(100vh - 6rem);
+}
+
+.menu-content {
+  width: 0;
+  overflow: hidden;
+  transition: 0.3s;
+  height: 100%;
+}
+
+.menu-content ul {
+  width: 260px;
+}
+
+.menu-content.open {
+  width: 260px;
+}
+
+.menu-overlay {
+  position: fixed;
+  left: 3rem;
+  top: 3rem;
+  bottom: 3rem;
+  right: 3rem;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0);
+  transition: 0.3s;
+}
+
+.menu-overlay.open {
+  z-index: 100000;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 @media only screen and (max-width: 480px) {

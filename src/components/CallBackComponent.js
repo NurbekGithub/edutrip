@@ -9,7 +9,7 @@ export default function CallBackComponent() {
         </h2>
         <div className="flex">
           <input
-            class="flex-1 appearance-none bg-gray-200 text-gray-700 border border-gray-200 py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            className="flex-1 appearance-none bg-gray-200 text-gray-700 border border-gray-200 py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             placeholder="Ваш номер телефона"
           />
           <button className="bg-teal-400 hover:bg-teal-500 text-gray-100 font-bold py-2 px-4">
