@@ -165,10 +165,6 @@ noscript {
   border-width: 10px;
 }
 
-.section {
-  height: calc(100vh - 6rem);
-}
-
 .menu-content {
   width: 0;
   overflow: hidden;
@@ -199,6 +195,19 @@ noscript {
   z-index: 100000;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+/*====================== CARD ============*/
+
+.card .card-content-teal {
+  background-color: rgb(79, 209, 197);
+  transition: 0.3s;
+}
+
+.card:hover .card-content-teal {
+  background-color: rgba(79, 209, 197, 0.7);
+}
+
+/*====================== CARD ============*/
 
 @media only screen and (max-width: 480px) {
   html {
