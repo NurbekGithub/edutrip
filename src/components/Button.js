@@ -6,6 +6,7 @@ export default function Button({
   primary,
   white,
   className,
+  ...rest
 }) {
   let colorClass = ""
   if (primary) {
@@ -20,6 +21,7 @@ export default function Button({
   return (
     <button
       className={`rounded-full text-white px-6 text-sm font-bold uppercase py-1 ${colorClass} ${className}`}
+      {...rest}
     >
       {children}
     </button>

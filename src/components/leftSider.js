@@ -14,11 +14,12 @@ export default function LeftSider() {
           className="flex flex-col cursor-pointer items-center justify-center"
           onClick={toggleIsSidbarOpen}
         >
-          <span className="font-thin text-xs text-gray-500 vertical-text pl-8">
+          <span className="font-thin text-xs text-gray-500 vertical-text pl-8 select-none">
             МЕНЮ
           </span>
           <span>
             <Slider
+              className="outline-none"
               lineHeight={2}
               width={20}
               padding={0}
@@ -33,9 +34,12 @@ export default function LeftSider() {
         className={`menu-overlay ${isOpenClass}`}
         onClick={toggleIsSidbarOpen}
       >
-        <div className={`menu-content ${isOpenClass} bg-teal-400 text-white`}>
+        <div
+          className={`menu-content ${isOpenClass} bg-teal-400 text-white`}
+          onClick={e => e.stopPropagation()}
+        >
           <ul className="h-full flex flex-col justify-center">
-            <li className="w-full border-b border-teal-100">
+            <li className="w-full">
               <a
                 href="#"
                 className="block h-full py-2 text-center font-bold text-xl"
@@ -43,7 +47,7 @@ export default function LeftSider() {
                 Календарь туров
               </a>
             </li>
-            <li className="w-full border-b border-teal-100">
+            <li className="w-full">
               <a
                 href="#"
                 className="block h-full py-2 text-center font-bold text-xl"

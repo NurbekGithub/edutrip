@@ -20,6 +20,7 @@ import AnimatedCircle from "../components/AnimatedCircle"
 
 import map2 from "../images/map2.svg"
 import Feedback from "../components/Feedback"
+import FeedbackModal from "../components/FeedbackModal"
 
 const cardWrapperStyle = {
   height: "520px",
@@ -170,25 +171,43 @@ function About() {
 function Feedbacks() {
   return (
     <section className="container mx-auto py-12 relative">
-      <h2 className="text-3xl font-extrabold text-center mb-8">Отзывы</h2>
-      <CarouselProvider
-        naturalSlideWidth={100}
-        naturalSlideHeight={125}
-        totalSlides={2}
-      >
-        <Slider>
-          <Slide index={0}>
-            <Feedback />
-          </Slide>
-          <Slide index={1}>
-            <Feedback />
-          </Slide>
-        </Slider>
-        <div className="absolute top-0">
-          <ButtonBack>Back</ButtonBack>
-          <ButtonNext>Next</ButtonNext>
-        </div>
-      </CarouselProvider>
+      <div className="carousel-wrapper">
+        <CarouselProvider
+          naturalSlideWidth={100}
+          naturalSlideHeight={100}
+          totalSlides={2}
+        >
+          <div className="relative h-12 mb-8 leading-snug">
+            <h2 className="text-4xl uppercase font-extrabold text-center">
+              Отзывы
+            </h2>
+            <div className="absolute top-0 right-0">
+              <FeedbackModal />
+              <ButtonBack className="bg-gray-400 text-white hover:bg-teal-400 w-12 h-12 text-2xl font-bold rounded-full mr-2">
+                &lt;
+              </ButtonBack>
+              <ButtonNext className="bg-gray-400 text-white hover:bg-teal-400 w-12 h-12 text-2xl font-bold rounded-full">
+                &gt;
+              </ButtonNext>
+            </div>
+          </div>
+
+          <Slider>
+            <Slide index={0}>
+              <div className="flex -mx-2">
+                <Feedback />
+                <Feedback />
+              </div>
+            </Slide>
+            <Slide index={1}>
+              <div className="flex -mx-2">
+                <Feedback />
+                <Feedback />
+              </div>
+            </Slide>
+          </Slider>
+        </CarouselProvider>
+      </div>
     </section>
   )
 }

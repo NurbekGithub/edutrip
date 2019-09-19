@@ -41,12 +41,6 @@ button::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring,
-button:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
 fieldset {
   border: 1px solid silver;
   margin: 0 2px;
@@ -176,6 +170,36 @@ noscript {
   width: 260px;
 }
 
+.menu-content li {
+  position: relative;
+}
+
+.menu-content li::before {
+  top: 0;
+}
+
+.menu-content li::after {
+  bottom: 0;
+}
+
+.menu-content li::before,
+.menu-content li::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 1px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.5s;
+}
+
+.menu-content li:hover:after,
+.menu-content li:hover:before {
+  width: 100%;
+  height: 1px;
+}
+
 .menu-content.open {
   width: 260px;
 }
@@ -208,6 +232,10 @@ noscript {
 }
 
 /*====================== CARD ============*/
+
+.carousel-wrapper {
+  height: 500px;
+}
 
 @media only screen and (max-width: 480px) {
   html {

@@ -2,7 +2,7 @@ import React from "react"
 
 export default function Feedback() {
   return (
-    <div className="flex items-center bg-white py-8 px-4 select-none">
+    <div className="flex items-center bg-white py-8 px-4 select-none flex-1 mx-2">
       <div className="flex flex-col items-center mx-4 text-center">
         <div className="">img</div>
         <p className="text-xl font-extrabold">Даша Исачкина</p>
