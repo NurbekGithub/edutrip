@@ -1,5 +1,13 @@
 import React from "react"
 import { useInView } from "react-intersection-observer"
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+} from "pure-react-carousel"
+import "pure-react-carousel/dist/react-carousel.es.css"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Countup from "../components/Countup"
@@ -11,9 +19,65 @@ import RightCard from "../components/RightCard"
 import AnimatedCircle from "../components/AnimatedCircle"
 
 import map2 from "../images/map2.svg"
+import Feedback from "../components/Feedback"
 
 const cardWrapperStyle = {
   height: "520px",
+}
+
+function Turs() {
+  return (
+    <section className="container mx-auto">
+      <div className="flex px-8 justify-between mb-8">
+        <h2 className="text-4xl font-bold">БЛИЖАЙШИЕ ТУРЫ</h2>
+        <Button primary>Все туры</Button>
+      </div>
+      <div className="flex justify-between -mx-3 mb-6">
+        <div className="w-1/2 px-3">
+          <Card
+            BgImage={<Image imgName="Amsterdam.jpg" className="h-full" />}
+            contentColor="card-content-teal"
+            dates={["asd", "adsa"]}
+            path={["p", "a", "t", "h"]}
+            primaryText="asdasdasdsad asd asdas dasd asd asdasassdsdsa"
+            price="300$"
+          />
+        </div>
+        <div className="w-1/2 px-3" style={cardWrapperStyle}>
+          <RightCard
+            BgImage={<Image imgName="Amsterdam.jpg" className="h-full" />}
+            contentColor="card-content-teal"
+            dates={["asd", "adsa"]}
+            path={["p", "a", "t", "h"]}
+            primaryText="asdasdasdsad asd"
+            price="300$"
+          />
+        </div>
+      </div>
+      <div className="flex justify-between -mx-3 mb-6">
+        <div className="w-1/2 px-3">
+          <Card
+            BgImage={<Image imgName="Amsterdam.jpg" className="h-full" />}
+            contentColor="card-content-teal"
+            dates={["asd", "adsa"]}
+            path={["p", "a", "t", "h"]}
+            primaryText="asdasdasdsad asd asdas dasd asd asdasassdsdsa"
+            price="300$"
+          />
+        </div>
+        <div className="w-1/2 px-3" style={cardWrapperStyle}>
+          <RightCard
+            BgImage={<Image imgName="Amsterdam.jpg" className="h-full" />}
+            contentColor="card-content-teal"
+            dates={["asd", "adsa"]}
+            path={["p", "a", "t", "h"]}
+            primaryText="asdasdasdsad asd"
+            price="300$"
+          />
+        </div>
+      </div>
+    </section>
+  )
 }
 
 function About() {
@@ -103,6 +167,32 @@ function About() {
   )
 }
 
+function Feedbacks() {
+  return (
+    <section className="container mx-auto py-12 relative">
+      <h2 className="text-3xl font-extrabold text-center mb-8">Отзывы</h2>
+      <CarouselProvider
+        naturalSlideWidth={100}
+        naturalSlideHeight={125}
+        totalSlides={2}
+      >
+        <Slider>
+          <Slide index={0}>
+            <Feedback />
+          </Slide>
+          <Slide index={1}>
+            <Feedback />
+          </Slide>
+        </Slider>
+        <div className="absolute top-0">
+          <ButtonBack>Back</ButtonBack>
+          <ButtonNext>Next</ButtonNext>
+        </div>
+      </CarouselProvider>
+    </section>
+  )
+}
+
 const IndexPage = () => {
   return (
     <Layout>
@@ -111,57 +201,9 @@ const IndexPage = () => {
       <section className="w-full" style={sectionHeight}>
         <h1>Hi people</h1>
       </section>
-      <section className="container mx-auto">
-        <div className="flex px-8 justify-between mb-8">
-          <h2 className="text-4xl font-bold">БЛИЖАЙШИЕ ТУРЫ</h2>
-          <Button primary>Все туры</Button>
-        </div>
-        <div className="flex justify-between -mx-3 mb-6">
-          <div className="w-1/2 px-3">
-            <Card
-              BgImage={<Image imgName="Amsterdam.jpg" className="h-full" />}
-              contentColor="card-content-teal"
-              dates={["asd", "adsa"]}
-              path={["p", "a", "t", "h"]}
-              primaryText="asdasdasdsad asd asdas dasd asd asdasassdsdsa"
-              price="300$"
-            />
-          </div>
-          <div className="w-1/2 px-3" style={cardWrapperStyle}>
-            <RightCard
-              BgImage={<Image imgName="Amsterdam.jpg" className="h-full" />}
-              contentColor="card-content-teal"
-              dates={["asd", "adsa"]}
-              path={["p", "a", "t", "h"]}
-              primaryText="asdasdasdsad asd"
-              price="300$"
-            />
-          </div>
-        </div>
-        <div className="flex justify-between -mx-3 mb-6">
-          <div className="w-1/2 px-3">
-            <Card
-              BgImage={<Image imgName="Amsterdam.jpg" className="h-full" />}
-              contentColor="card-content-teal"
-              dates={["asd", "adsa"]}
-              path={["p", "a", "t", "h"]}
-              primaryText="asdasdasdsad asd asdas dasd asd asdasassdsdsa"
-              price="300$"
-            />
-          </div>
-          <div className="w-1/2 px-3" style={cardWrapperStyle}>
-            <RightCard
-              BgImage={<Image imgName="Amsterdam.jpg" className="h-full" />}
-              contentColor="card-content-teal"
-              dates={["asd", "adsa"]}
-              path={["p", "a", "t", "h"]}
-              primaryText="asdasdasdsad asd"
-              price="300$"
-            />
-          </div>
-        </div>
-      </section>
+      <Turs />
       <About />
+      <Feedbacks />
     </Layout>
   )
 }
