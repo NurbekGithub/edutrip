@@ -33,7 +33,9 @@ export default function FeedbackModal() {
             className="w-1/2 text-center"
             method="POST"
           >
-            <h2 className="text-3xl mb-10 text-center">ДОБАВИТЬ ОТЗЫВ</h2>
+            <h2 className="text-3xl mb-10 font-bold text-center">
+              ДОБАВИТЬ ОТЗЫВ
+            </h2>
             <input
               className="w-full mb-4 appearance-none bg-gray-200 text-gray-700 border border-gray-200 py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               placeholder="ФИО"
