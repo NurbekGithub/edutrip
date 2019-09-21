@@ -8,6 +8,7 @@ import {
   ButtonNext,
 } from "pure-react-carousel"
 import "pure-react-carousel/dist/react-carousel.es.css"
+import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Countup from "../components/Countup"
@@ -169,13 +170,45 @@ function About() {
 }
 
 function Feedbacks() {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulFeedbackSecond {
+        edges {
+          node {
+            name
+            updatedAt
+            userImage {
+              fluid(maxWidth: 500) {
+                ...GatsbyContentfulFluid
+                src
+              }
+            }
+            feedbackText {
+              feedbackText
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const feedbacks = data.allContentfulFeedbackSecond.edges
+
+  const slides = feedbacks.reduce((acc, feed, idx) => {
+    const FEEDBACK_IN_SLIDE = 2
+    const slideIndex = Math.floor(idx / FEEDBACK_IN_SLIDE)
+
+    acc[slideIndex] = (acc[slideIndex] || []).concat(feed)
+    return acc
+  }, [])
+
   return (
     <section className="container mx-auto py-12 relative">
       <div className="carousel-wrapper">
         <CarouselProvider
           naturalSlideWidth={100}
           naturalSlideHeight={100}
-          totalSlides={2}
+          totalSlides={slides.length}
         >
           <div className="relative h-12 mb-8 leading-snug">
             <h2 className="text-4xl uppercase font-extrabold text-center">
@@ -193,18 +226,21 @@ function Feedbacks() {
           </div>
 
           <Slider>
-            <Slide index={0}>
-              <div className="flex -mx-2">
-                <Feedback />
-                <Feedback />
-              </div>
-            </Slide>
-            <Slide index={1}>
-              <div className="flex -mx-2">
-                <Feedback />
-                <Feedback />
-              </div>
-            </Slide>
+            {slides.map((slide, idx) => (
+              <Slide key={idx} index={idx}>
+                <div className="flex -mx-2">
+                  {slide.map(({ node: feed }, idx) => (
+                    <Feedback
+                      key={idx}
+                      name={feed.name}
+                      updatedAt={feed.updatedAt}
+                      text={feed.feedbackText.feedbackText}
+                      imgFluid={feed.userImage.fluid}
+                    />
+                  ))}
+                </div>
+              </Slide>
+            ))}
           </Slider>
         </CarouselProvider>
       </div>

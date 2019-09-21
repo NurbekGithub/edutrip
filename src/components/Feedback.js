@@ -1,24 +1,21 @@
 import React from "react"
+import Img from "gatsby-image"
+import DayJS from "dayjs"
 
-export default function Feedback() {
+export default function Feedback({ name, text, imgFluid, updatedAt }) {
   return (
     <div className="flex items-center bg-white py-8 px-4 select-none flex-1 mx-2">
       <div className="flex flex-col items-center mx-4 text-center">
-        <div className="">img</div>
-        <p className="text-xl font-extrabold">Даша Исачкина</p>
+        <div>
+          <Img fluid={imgFluid} className="w-32 rounded-full h-32" />
+        </div>
+        <p className="text-xl font-extrabold">{name}</p>
         <hr className="h-1 w-full mt-2" />
-        <p className="text-sm text-gray-600">30.05.2019</p>
+        <p className="text-sm text-gray-600">
+          {DayJS(updatedAt).format("DD.MM.YYYY")}
+        </p>
       </div>
-      <p className="font-light text-sm text-gray-600">
-        Ребята, если вы хотите не только круто провести время и увидеть
-        достопримечательности в городах, но и найти новых друзей и даже семью,
-        близких людей, то Вам именно сюда() Отдельное спасибо нашим гидам в
-        каждом городе - вы просто космос! И огромное безграничное спасибо нашему
-        лучшему сопроваждающему, Андрею - ты нас соединил всех 😘 Евротрипс - а
-        вы просто волшебники, если ехать в тур то только с Вами и больше не с
-        кем ! One love - теперь Вам не изменяем() Только приехала домой, а уже
-        мониторю даты и трипы куда поехать дальше()(){" "}
-      </p>
+      <p className="font-light text-sm text-gray-600">{text}</p>
     </div>
   )
 }
