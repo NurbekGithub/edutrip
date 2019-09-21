@@ -189,9 +189,27 @@ function Feedbacks() {
           }
         }
       }
+      allContentfulUpcomingTours {
+        edges {
+          node {
+            price
+            title
+            meta {
+              path
+            }
+            backgroundImage {
+              fluid(maxWidth: 500) {
+                ...GatsbyContentfulFluid
+                src
+              }
+            }
+          }
+        }
+      }
     }
   `)
 
+  const upcomingTours = data.allContentfulUpcomingTours.edges
   const feedbacks = data.allContentfulFeedbackSecond.edges
 
   const slides = feedbacks.reduce((acc, feed, idx) => {
