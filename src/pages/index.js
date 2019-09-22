@@ -27,57 +27,30 @@ const cardWrapperStyle = {
   height: "520px",
 }
 
-function Turs() {
+function Tours({ tours }) {
+  console.log({ tours })
   return (
     <section className="container mx-auto">
       <div className="flex px-8 justify-between mb-8">
         <h2 className="text-4xl font-bold">БЛИЖАЙШИЕ ТУРЫ</h2>
         <Button primary>Все туры</Button>
       </div>
-      <div className="flex justify-between -mx-3 mb-6">
-        <div className="w-1/2 px-3">
-          <Card
-            BgImage={<Image imgName="Amsterdam.jpg" className="h-full" />}
-            contentColor="card-content-teal"
-            dates={["asd", "adsa"]}
-            path={["p", "a", "t", "h"]}
-            primaryText="asdasdasdsad asd asdas dasd asd asdasassdsdsa"
-            price="300$"
-          />
+      {tours.map((tour, idx) => (
+        <div key={idx} className="flex justify-between -mx-3 mb-6">
+          {tour.map(({ node }, idx) => (
+            <div key={idx} className="w-1/2 px-3">
+              <Card
+                imgFluid={node.bgImg.fluid}
+                contentColor="card-content-teal"
+                dates={["asd", "adsa"]}
+                path={node.meta.path}
+                primaryText={node.title}
+                price={node.price}
+              />
+            </div>
+          ))}
         </div>
-        <div className="w-1/2 px-3" style={cardWrapperStyle}>
-          <RightCard
-            BgImage={<Image imgName="Amsterdam.jpg" className="h-full" />}
-            contentColor="card-content-teal"
-            dates={["asd", "adsa"]}
-            path={["p", "a", "t", "h"]}
-            primaryText="asdasdasdsad asd"
-            price="300$"
-          />
-        </div>
-      </div>
-      <div className="flex justify-between -mx-3 mb-6">
-        <div className="w-1/2 px-3">
-          <Card
-            BgImage={<Image imgName="Amsterdam.jpg" className="h-full" />}
-            contentColor="card-content-teal"
-            dates={["asd", "adsa"]}
-            path={["p", "a", "t", "h"]}
-            primaryText="asdasdasdsad asd asdas dasd asd asdasassdsdsa"
-            price="300$"
-          />
-        </div>
-        <div className="w-1/2 px-3" style={cardWrapperStyle}>
-          <RightCard
-            BgImage={<Image imgName="Amsterdam.jpg" className="h-full" />}
-            contentColor="card-content-teal"
-            dates={["asd", "adsa"]}
-            path={["p", "a", "t", "h"]}
-            primaryText="asdasdasdsad asd"
-            price="300$"
-          />
-        </div>
-      </div>
+      ))}
     </section>
   )
 }
@@ -169,57 +142,7 @@ function About() {
   )
 }
 
-function Feedbacks() {
-  const data = useStaticQuery(graphql`
-    query {
-      allContentfulFeedbackSecond {
-        edges {
-          node {
-            name
-            updatedAt
-            userImage {
-              fluid(maxWidth: 500) {
-                ...GatsbyContentfulFluid
-                src
-              }
-            }
-            feedbackText {
-              feedbackText
-            }
-          }
-        }
-      }
-      allContentfulUpcomingTours {
-        edges {
-          node {
-            price
-            title
-            meta {
-              path
-            }
-            backgroundImage {
-              fluid(maxWidth: 500) {
-                ...GatsbyContentfulFluid
-                src
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  const upcomingTours = data.allContentfulUpcomingTours.edges
-  const feedbacks = data.allContentfulFeedbackSecond.edges
-
-  const slides = feedbacks.reduce((acc, feed, idx) => {
-    const FEEDBACK_IN_SLIDE = 2
-    const slideIndex = Math.floor(idx / FEEDBACK_IN_SLIDE)
-
-    acc[slideIndex] = (acc[slideIndex] || []).concat(feed)
-    return acc
-  }, [])
-
+function Feedbacks({ slides }) {
   return (
     <section className="container mx-auto py-12 relative">
       <div className="carousel-wrapper">
@@ -267,6 +190,63 @@ function Feedbacks() {
 }
 
 const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulFeedbackSecond {
+        edges {
+          node {
+            name
+            updatedAt
+            userImage {
+              fluid(maxWidth: 500) {
+                ...GatsbyContentfulFluid
+                src
+              }
+            }
+            feedbackText {
+              feedbackText
+            }
+          }
+        }
+      }
+      allContentfulUpcomingTours {
+        edges {
+          node {
+            price
+            title
+            meta {
+              path
+            }
+            bgImg {
+              fluid(maxWidth: 500) {
+                ...GatsbyContentfulFluid
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const upcomingTours = data.allContentfulUpcomingTours.edges
+  const feedbacks = data.allContentfulFeedbackSecond.edges
+
+  const slides = feedbacks.reduce((acc, feed, idx) => {
+    const FEEDBACK_IN_SLIDE = 2
+    const slideIndex = Math.floor(idx / FEEDBACK_IN_SLIDE)
+
+    acc[slideIndex] = (acc[slideIndex] || []).concat(feed)
+    return acc
+  }, [])
+
+  const tours = upcomingTours.reduce((acc, tour, idx) => {
+    const TOURS_IN_ROW = 2
+    const tourIndex = Math.floor(idx / TOURS_IN_ROW)
+
+    acc[tourIndex] = (acc[tourIndex] || []).concat(tour)
+    return acc
+  }, [])
   return (
     <Layout>
       <SEO title="Home" />
@@ -274,9 +254,9 @@ const IndexPage = () => {
       <section className="w-full" style={sectionHeight}>
         <h1>Hi people</h1>
       </section>
-      <Turs />
+      <Tours tours={tours} />
       <About />
-      <Feedbacks />
+      <Feedbacks slides={slides} />
     </Layout>
   )
 }

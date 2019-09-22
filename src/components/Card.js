@@ -1,9 +1,10 @@
 import React from "react"
-import Button from "./Button"
+import Img from "gatsby-image"
 import PropTypes from "prop-types"
+import Button from "./Button"
 
 export default function Card({
-  BgImage,
+  imgFluid,
   contentColor,
   primaryText,
   dates,
@@ -12,7 +13,7 @@ export default function Card({
 }) {
   return (
     <div className="h-full relative card cursor-pointer">
-      {BgImage}
+      <Img fluid={imgFluid} className="h-full" />
       <div
         className={`absolute text-right left-0 top-0 shadow-md p-4 pt-5 mt-12 w-2/3 ${contentColor}`}
       >
@@ -32,7 +33,7 @@ export default function Card({
         </div>
         <div className="flex items-center justify-end">
           <span className="font-bold text-white mr-4 tracking-wide">
-            {price}
+            {price} ₸
           </span>
           <Button primary>Подробнее</Button>
         </div>
@@ -42,7 +43,7 @@ export default function Card({
 }
 
 Card.propTypes = {
-  BgImage: PropTypes.node.isRequired,
+  imgFluid: PropTypes.string.isRequired,
   contentColor: PropTypes.string.isRequired,
   primaryText: PropTypes.string.isRequired,
   dates: PropTypes.arrayOf(PropTypes.string).isRequired,
