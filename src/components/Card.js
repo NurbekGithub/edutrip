@@ -3,6 +3,10 @@ import Img from "gatsby-image"
 import PropTypes from "prop-types"
 import Button from "./Button"
 
+const imgStyle = {
+  maxHeight: "520px",
+}
+
 export default function Card({
   imgFluid,
   contentColor,
@@ -13,7 +17,7 @@ export default function Card({
 }) {
   return (
     <div className="h-full relative card cursor-pointer">
-      <Img fluid={imgFluid} className="h-full" />
+      <Img fluid={imgFluid} className="h-full" style={imgStyle} />
       <div
         className={`absolute text-right left-0 top-0 shadow-md p-4 pt-5 mt-12 w-2/3 ${contentColor}`}
       >

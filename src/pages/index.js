@@ -52,22 +52,12 @@ const IndexPage = () => {
   const feedbacks = data.allContentfulFeedbackSecond.edges
 
   // 2 slides in a row
-  const slides = feedbacks.reduce((acc, feed, idx) => {
-    const FEEDBACK_IN_SLIDE = 2
-    const slideIndex = Math.floor(idx / FEEDBACK_IN_SLIDE)
-
-    acc[slideIndex] = (acc[slideIndex] || []).concat(feed)
-    return acc
-  }, [])
+  const FEEDBACK_IN_SLIDE = 2
+  const slides = chankArray(feedbacks, FEEDBACK_IN_SLIDE)
 
   // 2 tours in a row
-  const tours = upcomingTours.reduce((acc, tour, idx) => {
-    const TOURS_IN_ROW = 2
-    const tourIndex = Math.floor(idx / TOURS_IN_ROW)
-
-    acc[tourIndex] = (acc[tourIndex] || []).concat(tour)
-    return acc
-  }, [])
+  const TOURS_IN_ROW = 2
+  const tours = chankArray(upcomingTours, TOURS_IN_ROW)
   return (
     <Layout>
       <SEO title="Home" />

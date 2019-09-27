@@ -31,7 +31,7 @@ const Layout = ({ children }) => {
     <>
       <Header />
       <LeftSider />
-      <main className="m-12 bg-gray-200">{children}</main>
+      <main className="m-12 bg-gray-200 pb-24">{children}</main>
       <RightSider />
       <CallButton />
       <Footer />
