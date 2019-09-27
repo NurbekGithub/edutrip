@@ -16,7 +16,7 @@ function Tours({ tours }) {
               <Card
                 imgFluid={node.bgImg.fluid}
                 contentColor="card-content-teal"
-                dates={["asd", "adsa"]}
+                dates={node.meta.dates || []}
                 path={node.meta.path}
                 primaryText={node.title}
                 price={node.price}

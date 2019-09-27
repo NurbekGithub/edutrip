@@ -34,6 +34,7 @@ const IndexPage = () => {
             title
             meta {
               path
+              dates
             }
             bgImg {
               fluid(maxWidth: 500) {

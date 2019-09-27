@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react"
+import React, { useState, useEffect } from "react"
 import { Slider } from "react-burgers"
 import { Link } from "gatsby"
 
@@ -7,6 +7,20 @@ export default function LeftSider() {
   const toggleIsSidbarOpen = () => {
     setIsSiderOpen(!isSiderOpen)
   }
+
+  // close on esc keyup
+  useEffect(() => {
+    function handleKeyup(e) {
+      if (e.code === "Escape") {
+        setIsSiderOpen(false)
+      }
+    }
+    window.addEventListener("keyup", handleKeyup)
+    return () => {
+      window.removeEventListener("keyup", handleKeyup)
+    }
+  }, [])
+
   const isOpenClass = `${isSiderOpen ? "open" : ""}`
   return (
     <>
@@ -40,6 +54,14 @@ export default function LeftSider() {
           onClick={e => e.stopPropagation()}
         >
           <ul className="h-full flex flex-col justify-center">
+            <li className="w-full">
+              <Link
+                to="/"
+                className="block h-full py-2 text-center font-bold text-xl"
+              >
+                Главная
+              </Link>
+            </li>
             <li className="w-full">
               <a
                 href="#"
