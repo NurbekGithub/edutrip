@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react"
 import { Slider } from "react-burgers"
+import { Link } from "gatsby"
 
 export default function LeftSider() {
   const [isSiderOpen, setIsSiderOpen] = useState(false)
@@ -48,12 +49,12 @@ export default function LeftSider() {
               </a>
             </li>
             <li className="w-full">
-              <a
-                href="#"
+              <Link
+                to="/about"
                 className="block h-full py-2 text-center font-bold text-xl"
               >
                 О нас
-              </a>
+              </Link>
             </li>
             <li className="w-full">
               <a
