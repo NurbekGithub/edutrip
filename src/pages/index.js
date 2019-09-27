@@ -6,6 +6,7 @@ import { sectionHeight } from "../utils/globalStyleObjects"
 import About from "../components/homePage/About"
 import Tours from "../components/homePage/Tours"
 import Feedbacks from "../components/homePage/Feedbacks"
+import { chunkArray } from "../utils/responsive"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -53,11 +54,11 @@ const IndexPage = () => {
 
   // 2 slides in a row
   const FEEDBACK_IN_SLIDE = 2
-  const slides = chankArray(feedbacks, FEEDBACK_IN_SLIDE)
+  const slides = chunkArray(feedbacks, FEEDBACK_IN_SLIDE)
 
   // 2 tours in a row
   const TOURS_IN_ROW = 2
-  const tours = chankArray(upcomingTours, TOURS_IN_ROW)
+  const tours = chunkArray(upcomingTours, TOURS_IN_ROW)
   return (
     <Layout>
       <SEO title="Home" />
