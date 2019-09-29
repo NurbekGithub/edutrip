@@ -11,7 +11,12 @@ import { chunkArray } from "../utils/responsive"
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulFeedbackSecond {
+      contentfulAsset(title: { eq: "HomePageBackgroundVideo" }) {
+        file {
+          url
+        }
+      }
+      allContentfulFeedbackSecond(sort: { fields: id, order: DESC }) {
         edges {
           node {
             name
@@ -28,9 +33,10 @@ const IndexPage = () => {
           }
         }
       }
-      allContentfulUpcomingTours {
+      allContentfulUpcomingTours(sort: { fields: id, order: DESC }) {
         edges {
           node {
+            slug
             price
             title
             meta {
@@ -38,7 +44,7 @@ const IndexPage = () => {
               dates
             }
             bgImg {
-              fluid(maxWidth: 500) {
+              fluid {
                 ...GatsbyContentfulFluid
                 src
               }
@@ -51,6 +57,7 @@ const IndexPage = () => {
 
   const upcomingTours = data.allContentfulUpcomingTours.edges
   const feedbacks = data.allContentfulFeedbackSecond.edges
+  const bgVideoURL = data.contentfulAsset.file.url
 
   // 2 slides in a row
   const FEEDBACK_IN_SLIDE = 2
@@ -62,9 +69,15 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <section style={sectionHeight}></section>
-      <section className="w-full" style={sectionHeight}>
-        <h1>Hi people</h1>
+      <section style={sectionHeight} className="mb-8 bg-gray-900">
+        <video
+          width="100%"
+          style={{ height: "100%" }}
+          autoPlay="autoplay"
+          loop
+          muted
+          src={bgVideoURL}
+        />
       </section>
       <Tours tours={tours} />
       <About />

@@ -20,6 +20,7 @@ function Tours({ tours }) {
                 path={node.meta.path}
                 primaryText={node.title}
                 price={node.price}
+                slug={node.slug}
               />
             </div>
           ))}

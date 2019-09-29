@@ -17,7 +17,7 @@ const AboutPage = () => {
           src
         }
       }
-      allContentfulMember {
+      allContentfulMember(sort: { fields: id, order: ASC }) {
         nodes {
           picture {
             fluid(maxWidth: 500) {
