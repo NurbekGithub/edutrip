@@ -39,6 +39,7 @@ const IndexPage = () => {
             slug
             price
             title
+            contentColor
             meta {
               path
               dates

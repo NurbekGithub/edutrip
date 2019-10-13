@@ -15,7 +15,7 @@ function Tours({ tours }) {
             <div key={idx} className="w-1/2 px-3">
               <Card
                 imgFluid={node.bgImg.fluid}
-                contentColor="card-content-teal"
+                contentColor={`card-content-${node.contentColor || "teal"}`}
                 dates={node.meta.dates || []}
                 path={node.meta.path}
                 primaryText={node.title}
