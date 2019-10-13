@@ -29,7 +29,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/Amsterdam.jpg`, // This path is relative to the root of the site.
+        icon: `src/images/logo.jpeg`, // This path is relative to the root of the site.
       },
     },
     {
@@ -37,6 +37,14 @@ module.exports = {
       options: {
         spaceId: process.env.CONTETFULL_SPACE_ID,
         accessToken: process.env.CONTETFULL_ACCESS_TOKEN,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Montserrat"],
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

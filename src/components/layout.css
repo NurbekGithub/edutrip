@@ -13,6 +13,8 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: Montserrat, Roboto, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
 }
 article,
 aside,
@@ -50,7 +52,6 @@ legend {
   box-sizing: border-box;
   color: inherit;
   display: table;
-  max-width: 100%;
   padding: 0;
   white-space: normal;
 }
@@ -83,7 +84,6 @@ textarea {
   font: inherit;
 }
 html {
-  font: 112.5%/1.45em georgia, serif;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -96,19 +96,7 @@ html {
 *:after {
   box-sizing: inherit;
 }
-body {
-  color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
-  font-weight: normal;
-  word-wrap: break-word;
-  font-kerning: normal;
-  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
-  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
-  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
-  font-feature-settings: "kern", "liga", "clig", "calt";
-}
 img {
-  max-width: 100%;
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;

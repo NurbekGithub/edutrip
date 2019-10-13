@@ -21,6 +21,7 @@ function Tours({ tours }) {
                 primaryText={node.title}
                 price={node.price}
                 slug={node.slug}
+                isRightAligned={idx % 2 === 1}
               />
             </div>
           ))}
