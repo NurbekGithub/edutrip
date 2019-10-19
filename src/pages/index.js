@@ -2,13 +2,15 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { sectionHeight } from "../utils/globalStyleObjects"
+import { sectionHeight, TabletWidth } from "../utils/globalStyleObjects"
 import About from "../components/homePage/About"
 import Tours from "../components/homePage/Tours"
 import Feedbacks from "../components/homePage/Feedbacks"
 import { chunkArray } from "../utils/responsive"
+import { useMediaPredicate } from "react-media-hook"
 
 const IndexPage = () => {
+  const minWidthTablet = useMediaPredicate(`(min-width: ${TabletWidth}px)`)
   const data = useStaticQuery(graphql`
     query {
       contentfulAsset(title: { eq: "HomePageBackgroundVideo" }) {
@@ -61,16 +63,19 @@ const IndexPage = () => {
   const bgVideoURL = data.contentfulAsset.file.url
 
   // 2 slides in a row
-  const FEEDBACK_IN_SLIDE = 2
+  const FEEDBACK_IN_SLIDE = minWidthTablet ? 2 : 1
   const slides = chunkArray(feedbacks, FEEDBACK_IN_SLIDE)
 
   // 2 tours in a row
-  const TOURS_IN_ROW = 2
+  const TOURS_IN_ROW = minWidthTablet ? 2 : 1
   const tours = chunkArray(upcomingTours, TOURS_IN_ROW)
   return (
     <Layout>
       <SEO title="Home" />
-      <section style={sectionHeight} className="mb-8 bg-gray-900">
+      <section
+        style={minWidthTablet ? sectionHeight : null}
+        className="mb-8 bg-gray-900"
+      >
         <video
           width="100%"
           style={{ height: "100%" }}
@@ -80,7 +85,7 @@ const IndexPage = () => {
           src={bgVideoURL}
         />
       </section>
-      <Tours tours={tours} />
+      <Tours tours={tours} isUpcoming />
       <About />
       <Feedbacks slides={slides} />
     </Layout>

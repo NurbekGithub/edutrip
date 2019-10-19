@@ -24,7 +24,7 @@ export default function LeftSider() {
   const isOpenClass = `${isSiderOpen ? "open" : ""}`
   return (
     <>
-      <aside className="fixed left-0 h-screen flex items-center justify-center w-12 top-0">
+      <aside className="fixed left-0 h-screen md:flex items-center justify-center w-12 top-0 hidden">
         <div
           className="flex flex-col cursor-pointer items-center justify-center"
           onClick={toggleIsSidbarOpen}
@@ -63,12 +63,12 @@ export default function LeftSider() {
               </Link>
             </li>
             <li className="w-full">
-              <a
-                href="#"
+              <Link
+                to="/tours"
                 className="block h-full py-2 text-center font-bold text-xl"
               >
                 Календарь туров
-              </a>
+              </Link>
             </li>
             <li className="w-full">
               <Link

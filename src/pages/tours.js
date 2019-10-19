@@ -1,20 +1,49 @@
 import React from "react"
-import SEO from "../components/seo"
+import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
-import { Router, Link } from "@reach/router"
+import SEO from "../components/seo"
+import Tours from "../components/homePage/Tours"
+import { TabletWidth } from "../utils/globalStyleObjects"
+import { chunkArray } from "../utils/responsive"
+import { useMediaPredicate } from "react-media-hook"
 
-const SomeSubPage = props => {
-  return <div>Hi from SubPage with id: {props.id}</div>
+const ToursPage = () => {
+  const minWidthTablet = useMediaPredicate(`(min-width: ${TabletWidth}px)`)
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulUpcomingTours(sort: { fields: id, order: DESC }) {
+        edges {
+          node {
+            slug
+            price
+            title
+            contentColor
+            meta {
+              path
+              dates
+            }
+            bgImg {
+              fluid {
+                ...GatsbyContentfulFluid
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const tours = data.allContentfulUpcomingTours.edges
+  const TOURS_IN_ROW = minWidthTablet ? 2 : 1
+  const chankedTours = chunkArray(tours, TOURS_IN_ROW)
+
+  return (
+    <Layout>
+      <SEO title="Tours" />
+      <Tours tours={chankedTours} />
+    </Layout>
+  )
 }
 
-const Tours = () => (
-  <Layout>
-    <SEO title="Tours" />
-    <Link to="/tours/1">1</Link>
-    <Router>
-      <SomeSubPage path="/tours/:id" />
-    </Router>
-  </Layout>
-)
-
-export default Tours
+export default ToursPage

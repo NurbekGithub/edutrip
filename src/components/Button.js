@@ -6,6 +6,7 @@ export default function Button({
   primary,
   white,
   className,
+  Component,
   ...rest
 }) {
   let colorClass = ""
@@ -17,6 +18,16 @@ export default function Button({
   }
   if (white) {
     colorClass = "bg-gray-300 hover:bg-gray-400 text-gray-900"
+  }
+  if (Component) {
+    return (
+      <Component
+        className={`rounded-full text-white px-6 text-sm font-bold uppercase py-1 ${colorClass} ${className}`}
+        {...rest}
+      >
+        {children}
+      </Component>
+    )
   }
   return (
     <button

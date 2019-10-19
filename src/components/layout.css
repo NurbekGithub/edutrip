@@ -195,7 +195,7 @@ noscript {
 .menu-overlay {
   position: fixed;
   left: 3rem;
-  top: 3rem;
+  top: 4rem;
   bottom: 3rem;
   right: 3rem;
   z-index: -1;

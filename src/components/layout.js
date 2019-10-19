@@ -31,7 +31,9 @@ const Layout = ({ children }) => {
     <>
       <Header />
       <LeftSider />
-      <main className="m-12 bg-gray-200 pb-24">{children}</main>
+      <main className="md:mx-12 mb-12 mt-16 bg-gray-200 m-1 pb-24 overflow-x-hidden">
+        {children}
+      </main>
       <RightSider />
       <CallButton />
       <Footer />
