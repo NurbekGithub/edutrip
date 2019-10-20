@@ -8,6 +8,7 @@ import Tours from "../components/homePage/Tours"
 import Feedbacks from "../components/homePage/Feedbacks"
 import { chunkArray } from "../utils/responsive"
 import { useMediaPredicate } from "react-media-hook"
+import Contacts from "../components/homePage/Contacts"
 
 const IndexPage = () => {
   const minWidthTablet = useMediaPredicate(`(min-width: ${TabletWidth}px)`)
@@ -35,7 +36,7 @@ const IndexPage = () => {
           }
         }
       }
-      allContentfulUpcomingTours(sort: { fields: id, order: DESC }) {
+      allContentfulUpcomingTours(sort: { fields: id, order: DESC }, limit: 4) {
         edges {
           node {
             slug
@@ -77,6 +78,7 @@ const IndexPage = () => {
         className="mb-8 bg-gray-900"
       >
         <video
+          playsinline
           width="100%"
           style={{ height: "100%" }}
           autoPlay="autoplay"
@@ -88,6 +90,7 @@ const IndexPage = () => {
       <Tours tours={tours} isUpcoming />
       <About />
       <Feedbacks slides={slides} />
+      <Contacts />
     </Layout>
   )
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import Modal from "react-modal"
 import Button from "../components/Button"
 
-export default function FeedbackModal() {
+export default function FeedbackModal({ minWidthTablet }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <>
@@ -20,8 +20,8 @@ export default function FeedbackModal() {
           },
           content: {
             top: "20%",
-            left: "20%",
-            width: "60vw",
+            left: minWidthTablet ? "20%" : 0,
+            width: minWidthTablet ? "60vw" : "100vw",
             height: "60vh",
           },
         }}
@@ -30,10 +30,10 @@ export default function FeedbackModal() {
         <div className="bg-gray-100 w-full h-full flex justify-center p-8">
           <form
             action="https://formspree.io/edutravelcenter.kz@gmail.com"
-            className="w-1/2 text-center"
+            className="lg:w-1/2 w-full text-center"
             method="POST"
           >
-            <h2 className="text-3xl mb-10 font-bold text-center">
+            <h2 className="lg:text-3xl text-2xl mb-10 font-bold text-center">
               ДОБАВИТЬ ОТЗЫВ
             </h2>
             <input

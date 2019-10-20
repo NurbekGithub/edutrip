@@ -15,12 +15,13 @@ import { useMediaPredicate } from "react-media-hook"
 function Feedbacks({ slides }) {
   const minWidthTablet = useMediaPredicate(`(min-width: ${TabletWidth}px)`)
   return (
-    <section className="container mx-auto py-12 relative">
+    <section className="container mx-auto pt-8 relative">
       <div className="carousel-wrapper">
         <CarouselProvider
           naturalSlideWidth={100}
           naturalSlideHeight={100}
           totalSlides={slides.length}
+          lockOnWindowScroll
         >
           <div className="relative h-12 mb-8 leading-snug">
             {minWidthTablet && (
@@ -29,7 +30,7 @@ function Feedbacks({ slides }) {
               </h2>
             )}
             <div className="absolute top-0 right-0">
-              <FeedbackModal />
+              <FeedbackModal minWidthTablet={minWidthTablet} />
               <ButtonBack className="bg-gray-400 text-white hover:bg-teal-400 w-12 h-12 text-2xl font-bold rounded-full mr-2">
                 &lt;
               </ButtonBack>
