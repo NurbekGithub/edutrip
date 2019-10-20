@@ -25,7 +25,7 @@ function TourProgram({ program }) {
     descriptionImg: { fluid },
   } = program
   return (
-    <div className="bg-gray-300 p-8">
+    <div className="bg-gray-300 lg:p-8 p-2">
       <div className="flex flex-col lg:flex-row mb-8">
         <div className="w-full lg:w-1/2 lg:border-r-2 border-b lg:border-b-0 border-green-600 p-2">
           <figure className="rounded-full flex justify-center items-center text-white text-xl font-bold w-24 h-24 bg-teal-400">
@@ -45,7 +45,7 @@ function TourProgram({ program }) {
           className="w-full lg:w-1/2 lg:border-r-2 border-green-600 p-2"
           dangerouslySetInnerHTML={{ __html: content }}
         />
-        <div className="w-full lg:w-1/2 pl-2">
+        <div className="w-full lg:w-1/2 lg:pl-2">
           <Image fluid={fluid} style={{ height: "300px" }} />
         </div>
       </div>

@@ -134,6 +134,9 @@ noscript {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
+header {
+  z-index: 5000;
+}
 
 .vertical-text {
   transform: rotateZ(-90deg);

@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import { Slider } from "react-burgers"
 
 const Header = ({ toggleIsSidbarOpen, isSiderOpen }) => (
-  <header className="fixed bg-white z-10 top-0 h-16 w-full flex items-center justify-center">
+  <header className="fixed bg-white top-0 h-16 w-full flex items-center justify-center">
     <div
       className="sm:hidden absolute left-0 pl-4 flex cursor-pointer items-center justify-center"
       onClick={toggleIsSidbarOpen}

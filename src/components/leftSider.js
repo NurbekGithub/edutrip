@@ -61,12 +61,12 @@ export default function LeftSider({ toggleIsSidbarOpen, isSiderOpen }) {
               </Link>
             </li>
             <li className="w-full">
-              <a
-                href="#"
+              <Link
+                to="/contacts"
                 className="block h-full py-2 text-center font-bold text-xl"
               >
-                контакты
-              </a>
+                Контакты
+              </Link>
             </li>
           </ul>
         </div>
