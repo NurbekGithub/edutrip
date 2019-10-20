@@ -194,13 +194,18 @@ noscript {
 
 .menu-overlay {
   position: fixed;
-  left: 3rem;
   top: 4rem;
   bottom: 3rem;
-  right: 3rem;
   z-index: -1;
   background-color: rgba(0, 0, 0, 0);
   transition: 0.3s;
+}
+
+@media (min-width: 640px) {
+  .menu-overlay {
+    left: 3rem;
+    right: 3rem;
+  }
 }
 
 .menu-overlay.open {

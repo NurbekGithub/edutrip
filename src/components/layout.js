@@ -1,13 +1,5 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import React from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import Footer from "./footer"
@@ -17,20 +9,34 @@ import RightSider from "./rightSider"
 import CallButton from "./callButton"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
+  const [isSiderOpen, setIsSiderOpen] = useState(false)
+  const toggleIsSidbarOpen = () => {
+    setIsSiderOpen(!isSiderOpen)
+  }
+
+  // close on esc keyup
+  useEffect(() => {
+    function handleKeyup(e) {
+      if (e.code === "Escape") {
+        setIsSiderOpen(false)
       }
     }
-  `)
+    window.addEventListener("keyup", handleKeyup)
+    return () => {
+      window.removeEventListener("keyup", handleKeyup)
+    }
+  }, [])
 
   return (
     <>
-      <Header />
-      <LeftSider />
+      <Header
+        isSiderOpen={isSiderOpen}
+        toggleIsSidbarOpen={toggleIsSidbarOpen}
+      />
+      <LeftSider
+        isSiderOpen={isSiderOpen}
+        toggleIsSidbarOpen={toggleIsSidbarOpen}
+      />
       <main className="md:mx-12 mb-12 mt-16 bg-gray-200 m-1 pb-24 overflow-x-hidden">
         {children}
       </main>

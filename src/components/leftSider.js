@@ -1,26 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Slider } from "react-burgers"
 import { Link } from "gatsby"
 
-export default function LeftSider() {
-  const [isSiderOpen, setIsSiderOpen] = useState(false)
-  const toggleIsSidbarOpen = () => {
-    setIsSiderOpen(!isSiderOpen)
-  }
-
-  // close on esc keyup
-  useEffect(() => {
-    function handleKeyup(e) {
-      if (e.code === "Escape") {
-        setIsSiderOpen(false)
-      }
-    }
-    window.addEventListener("keyup", handleKeyup)
-    return () => {
-      window.removeEventListener("keyup", handleKeyup)
-    }
-  }, [])
-
+export default function LeftSider({ toggleIsSidbarOpen, isSiderOpen }) {
   const isOpenClass = `${isSiderOpen ? "open" : ""}`
   return (
     <>
@@ -46,7 +28,7 @@ export default function LeftSider() {
         </div>
       </aside>
       <div
-        className={`menu-overlay ${isOpenClass}`}
+        className={`menu-overlay left-0 right-0 ${isOpenClass}`}
         onClick={toggleIsSidbarOpen}
       >
         <div
