@@ -13,11 +13,7 @@ function About() {
   })
   const minWidthTablet = useMediaPredicate(`(min-width: ${TabletWidth}px)`)
   return (
-    <section
-      className="w-full bg-white lg:p-8 p-2"
-      style={minWidthTablet ? sectionHeight : null}
-      ref={ref}
-    >
+    <section className="w-full bg-white lg:p-8 p-2" ref={ref}>
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-2">О НАС</h2>
         <div className="flex flex-col md:flex-row">

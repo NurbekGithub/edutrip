@@ -14,11 +14,7 @@ function About() {
 
   const minWidthTablet = useMediaPredicate(`(min-width: ${TabletWidth}px)`)
   return (
-    <section
-      className="w-full bg-white px-8 py-12 overflow-auto"
-      style={minWidthTablet ? sectionHeight : null}
-      ref={ref}
-    >
+    <section className="w-full bg-white px-8 py-12 overflow-auto" ref={ref}>
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-2">О НАС</h2>
         <div className="flex">
