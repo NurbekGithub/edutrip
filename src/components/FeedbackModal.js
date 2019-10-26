@@ -34,10 +34,10 @@ export default function FeedbackModal({ minWidthTablet }) {
             className="lg:w-1/2 w-full text-center"
             method="POST"
           >
+            <input type="hidden" name="form-name" value="feedback" />
             <h2 className="lg:text-3xl text-2xl mb-10 font-bold text-center">
               ДОБАВИТЬ ОТЗЫВ
             </h2>
-            <input type="hidden" name="form-name" value="feedback" />
             <input
               className="w-full mb-4 appearance-none bg-gray-200 text-gray-700 border border-gray-200 py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               placeholder="ФИО"
