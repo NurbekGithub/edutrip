@@ -29,13 +29,15 @@ export default function FeedbackModal({ minWidthTablet }) {
       >
         <div className="bg-gray-100 w-full h-full flex justify-center p-8">
           <form
-            action="https://formspree.io/edutravelcenter.kz@gmail.com"
+            name="feedback"
+            data-netlify="true"
             className="lg:w-1/2 w-full text-center"
             method="POST"
           >
             <h2 className="lg:text-3xl text-2xl mb-10 font-bold text-center">
               ДОБАВИТЬ ОТЗЫВ
             </h2>
+            <input type="hidden" name="form-name" value="feedback" />
             <input
               className="w-full mb-4 appearance-none bg-gray-200 text-gray-700 border border-gray-200 py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               placeholder="ФИО"
@@ -55,7 +57,10 @@ export default function FeedbackModal({ minWidthTablet }) {
               required
               rows={5}
             />
-            <button className="bg-teal-400 hover:bg-teal-500 text-gray-100 font-bold py-2 px-4">
+            <button
+              type="submit"
+              className="bg-teal-400 hover:bg-teal-500 text-gray-100 font-bold py-2 px-4"
+            >
               Отправить
             </button>
           </form>
