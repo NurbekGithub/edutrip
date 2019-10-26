@@ -26,14 +26,13 @@ export default function GiveMeEmail() {
         ПОДПИCАТЬСЯ НА НОВОСТИ
       </h3>
       <form
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
+        name="email"
         data-netlify="true"
-        // name="email"
-        // data-netlify="true"
         // data-netlify-honeypot="bot-field"
         className="w-full text-center flex mb-4"
         // action="https://formspree.io/edutravelcenter.kz@gmail.com"
-        // method="POST"
+        method="POST"
       >
         <input type="hidden" name="form-name" value="email" />
         <input
