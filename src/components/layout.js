@@ -41,7 +41,7 @@ const Layout = ({ children }) => {
         {children}
       </main>
       <RightSider />
-      <CallButton />
+      {/* <CallButton /> */}
       <Footer />
     </>
   )

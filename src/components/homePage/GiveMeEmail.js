@@ -1,24 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import { TabletWidth } from "../../utils/globalStyleObjects"
 import { useMediaPredicate } from "react-media-hook"
 import { FaPaperPlane } from "react-icons/fa"
-import { encode } from "punycode"
 
 export default function GiveMeEmail() {
   const minWidthTablet = useMediaPredicate(`(min-width: ${TabletWidth}px)`)
-  const [state, setState] = useState({ email: "" })
-
-  function handleSubmit(e) {
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "email", state }),
-    })
-      .then(() => alert("Success!"))
-      .catch(error => alert(error))
-
-    e.preventDefault()
-  }
 
   return (
     <div className="container mx-auto">
@@ -26,13 +12,10 @@ export default function GiveMeEmail() {
         ПОДПИCАТЬСЯ НА НОВОСТИ
       </h3>
       <form
-        onSubmit={handleSubmit}
-        // name="email"
-        // data-netlify="true"
-        // data-netlify-honeypot="bot-field"
+        name="email"
+        data-netlify="true"
         className="w-full text-center flex mb-4"
-        // action="https://formspree.io/edutravelcenter.kz@gmail.com"
-        // method="POST"
+        method="POST"
       >
         <input type="hidden" name="form-name" value="email" />
         <input
@@ -40,8 +23,6 @@ export default function GiveMeEmail() {
           placeholder="e-mail"
           name="email"
           type="email"
-          value={state.email}
-          onChange={e => setState({ email: e.target.value })}
           required
         />
         <button
