@@ -36,7 +36,10 @@ const IndexPage = () => {
           }
         }
       }
-      allContentfulUpcomingTours(sort: { fields: id, order: DESC }, limit: 4) {
+      allContentfulUpcomingTours(
+        sort: { fields: order, order: ASC }
+        limit: 4
+      ) {
         edges {
           node {
             slug
@@ -89,7 +92,7 @@ const IndexPage = () => {
         className="mb-8 bg-gray-900"
       >
         <video
-          playsinline
+          playsInline
           width="100%"
           style={{ height: "100%" }}
           autoPlay="autoplay"
