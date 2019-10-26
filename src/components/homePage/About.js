@@ -33,7 +33,7 @@ function About({ about }) {
           <img src={map2} alt="map" className="hidden md:block w-2/5" />
           {inView && (
             <div className="w-full md:w-3/5 flex flex-col justify-center">
-              <CountAndText count={about.years} text="ЛЕТ УСПЕШНОЙ РАБОТЫ" />
+              <CountAndText count={about.years} text="ГОДА УСПЕШНОЙ РАБОТЫ" />
               <CountAndText
                 count={about.family}
                 text="СОЗДАННЫХ СЕМЕЙ В ТУРАХ"
