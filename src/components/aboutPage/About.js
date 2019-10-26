@@ -1,12 +1,11 @@
 import React from "react"
-import Countup from "../Countup"
 import AnimatedCircle from "../AnimatedCircle"
 import { useInView } from "react-intersection-observer"
-import { sectionHeight, TabletWidth } from "../../utils/globalStyleObjects"
+import { TabletWidth } from "../../utils/globalStyleObjects"
 import map2 from "../../images/map2.svg"
 import { useMediaPredicate } from "react-media-hook"
 
-function About() {
+function About({ about }) {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -23,7 +22,7 @@ function About() {
               <div className="flex mt-4">
                 <p className="flex items-center w-1/2 px-4 flex-col md:flex-row">
                   <AnimatedCircle
-                    progress={67}
+                    progress={about.touristsPercentage}
                     progressColor="lightSeaGreen"
                     lineWidth="30"
                     size={minWidthTablet ? 280 : 120}
@@ -37,7 +36,7 @@ function About() {
                 </p>
                 <p className="flex items-center w-1/2 px-4 flex-col md:flex-row">
                   <AnimatedCircle
-                    progress={52}
+                    progress={about.travelPercentage}
                     progressColor="lightSeaGreen"
                     lineWidth="30"
                     size={minWidthTablet ? 280 : 120}

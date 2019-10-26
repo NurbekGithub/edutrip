@@ -1,5 +1,6 @@
 import React from "react"
 import { Slider } from "react-burgers"
+import { FaFacebookF, FaInstagram, FaVk } from "react-icons/fa"
 import { Link } from "gatsby"
 
 export default function LeftSider({ toggleIsSidbarOpen, isSiderOpen }) {
@@ -67,6 +68,26 @@ export default function LeftSider({ toggleIsSidbarOpen, isSiderOpen }) {
               >
                 Контакты
               </Link>
+            </li>
+            <li className="w-full flex justify-center mt-4">
+              <a
+                href="https://www.facebook.com/EduTravel-1958334667515174/"
+                className="py-2 text-white-500 mx-3 hover:text-teal-400"
+              >
+                <FaFacebookF />
+              </a>
+              <a
+                href="https://instagram.com/edutravel_kz?igshid=1q5jmb15pc0jm"
+                className="py-2 text-white-500 mx-3 hover:text-teal-400"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="https://vk.com/edutravelkz"
+                className="py-2 text-white-500 mx-3 hover:text-teal-400"
+              >
+                <FaVk />
+              </a>
             </li>
           </ul>
         </div>

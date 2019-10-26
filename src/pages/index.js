@@ -56,12 +56,23 @@ const IndexPage = () => {
           }
         }
       }
+      contentfulAbout {
+        family
+        km
+        tourists
+        touristsPercentage
+        tours
+        travelPercentage
+        visa
+        years
+      }
     }
   `)
 
   const upcomingTours = data.allContentfulUpcomingTours.edges
   const feedbacks = data.allContentfulFeedbackSecond.edges
   const bgVideoURL = data.contentfulAsset.file.url
+  const about = data.contentfulAbout
 
   // 2 slides in a row
   const FEEDBACK_IN_SLIDE = minWidthTablet ? 2 : 1
@@ -88,7 +99,7 @@ const IndexPage = () => {
         />
       </section>
       <Tours tours={tours} isUpcoming />
-      <About />
+      <About about={about} />
       <Feedbacks slides={slides} />
       <Contacts />
     </Layout>

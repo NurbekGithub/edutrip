@@ -35,6 +35,10 @@ const AboutPage = () => {
           position
         }
       }
+      contentfulAbout {
+        touristsPercentage
+        travelPercentage
+      }
     }
   `)
 
@@ -42,6 +46,7 @@ const AboutPage = () => {
   const members = data.allContentfulMember.nodes
   const chunkedMembers = chunkArray(members, MEMBER_IN_ROW)
   const bgImageFluid = data.contentfulAsset.fluid
+  const about = data.contentfulAbout
 
   const minWidthTablet = useMediaPredicate(`(min-width: ${TabletWidth}px)`)
   return (
@@ -50,7 +55,7 @@ const AboutPage = () => {
       <section style={minWidthTablet ? sectionHeight : null}>
         <Img fluid={bgImageFluid} className="w-full h-full" />
       </section>
-      <About />
+      <About about={about} />
       <Team chunkedMembers={chunkedMembers} />
     </Layout>
   )

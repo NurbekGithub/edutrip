@@ -2,11 +2,23 @@ import React from "react"
 import Countup from "../Countup"
 import AnimatedCircle from "../AnimatedCircle"
 import { useInView } from "react-intersection-observer"
-import { sectionHeight, TabletWidth } from "../../utils/globalStyleObjects"
+import { TabletWidth } from "../../utils/globalStyleObjects"
 import map2 from "../../images/map2.svg"
 import { useMediaPredicate } from "react-media-hook"
 
-function About() {
+function CountAndText({ count, text }) {
+  if (!count) return null
+  return (
+    <p className="mb-4 md:font-bold text-sm md:text-base lg:text-xl flex justify-between sm:block">
+      <span className="font-extrabold text-teal-400 sm:text-2xl lg:text-4xl sm:w-1/3 text-right sm:pr-8 inline-block">
+        <Countup params={{ end: count }} />
+      </span>
+      <span>{text}</span>
+    </p>
+  )
+}
+
+function About({ about }) {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -21,46 +33,19 @@ function About() {
           <img src={map2} alt="map" className="hidden md:block w-2/5" />
           {inView && (
             <div className="w-full md:w-3/5 flex flex-col justify-center">
-              <p className="mb-4 md:font-bold text-sm md:text-base lg:text-xl flex justify-between sm:block">
-                <span className="font-extrabold text-teal-400 sm:text-2xl lg:text-4xl sm:w-1/3 text-right sm:pr-8 inline-block">
-                  <Countup params={{ end: 5 }} />
-                </span>
-                <span>ЛЕТ УСПЕШНОЙ РАБОТЫ</span>
-              </p>
-              <p className="mb-4 md:font-bold text-sm md:text-base lg:text-xl flex justify-between sm:block">
-                <span className="font-extrabold text-teal-400 sm:text-2xl lg:text-4xl sm:w-1/3 text-right sm:pr-8 inline-block">
-                  <Countup params={{ end: 23 }} />
-                </span>
-                <span>СОЗДАННЫХ СЕМЕЙ В ТУРАХ</span>
-              </p>
-              <p className="mb-4 md:font-bold text-sm md:text-base lg:text-xl flex justify-between sm:block">
-                <span className="font-extrabold text-teal-400 sm:text-2xl lg:text-4xl sm:w-1/3 text-right sm:pr-8 inline-block">
-                  +<Countup params={{ end: 150 }} />
-                </span>
-                <span>ОРГАНИЗОВАННЫХ ТУРОВ</span>
-              </p>
-              <p className="mb-4 md:font-bold text-sm md:text-base lg:text-xl flex justify-between sm:block">
-                <span className="font-extrabold text-teal-400 sm:text-2xl lg:text-4xl sm:w-1/3 text-right sm:pr-8 inline-block">
-                  +<Countup params={{ end: 5000 }} />
-                </span>
-                <span>ОТКРЫТЫХ ВИЗ</span>
-              </p>
-              <p className="mb-4 md:font-bold text-sm md:text-base lg:text-xl flex justify-between sm:block">
-                <span className="font-extrabold text-teal-400 sm:text-2xl lg:text-4xl sm:w-1/3 text-right sm:pr-8 inline-block">
-                  +<Countup params={{ end: 8000 }} />
-                </span>
-                <span>ДОВОЛЬНЫХ ТУРИСТОВ</span>
-              </p>
-              <p className="mb-4 md:font-bold text-sm md:text-base lg:text-xl flex justify-between sm:block">
-                <span className="font-extrabold text-teal-400 sm:text-2xl lg:text-4xl sm:w-1/3 text-right sm:pr-8 inline-block">
-                  +<Countup params={{ end: 800000 }} />
-                </span>
-                <span>КИЛОМЕТРОВ ПРЕОДОЛЕНО</span>
-              </p>
+              <CountAndText count={about.years} text="ЛЕТ УСПЕШНОЙ РАБОТЫ" />
+              <CountAndText
+                count={about.family}
+                text="СОЗДАННЫХ СЕМЕЙ В ТУРАХ"
+              />
+              <CountAndText count={about.tours} text="ОРГАНИЗОВАННЫХ ТУРОВ" />
+              <CountAndText count={about.visa} text="ОТКРЫТЫХ ВИЗ" />
+              <CountAndText count={about.tourists} text="ДОВОЛЬНЫХ ТУРИСТОВ" />
+              <CountAndText count={about.km} text="КИЛОМЕТРОВ ПРЕОДОЛЕНО" />
               <div className="flex mt-4">
                 <p className="flex items-center w-1/2 px-4 flex-col md:flex-row">
                   <AnimatedCircle
-                    progress={67}
+                    progress={about.touristsPercentage}
                     progressColor="lightSeaGreen"
                     lineWidth="30"
                     size={minWidthTablet ? 280 : 120}
@@ -74,7 +59,7 @@ function About() {
                 </p>
                 <p className="flex items-center w-1/2 px-4 flex-col md:flex-row">
                   <AnimatedCircle
-                    progress={52}
+                    progress={about.travelPercentage}
                     progressColor="lightSeaGreen"
                     lineWidth="30"
                     size={minWidthTablet ? 280 : 120}
