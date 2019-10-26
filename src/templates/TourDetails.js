@@ -18,12 +18,14 @@ function TourCandy({ candy, imgFixed }) {
 function TourProgram({ program }) {
   const {
     day,
-    meta: { events },
+    meta,
     description: {
       internal: { content },
     },
-    descriptionImg: { fluid },
+    descriptionImg,
   } = program
+  const events = meta ? meta.events : []
+  const fluid = descriptionImg ? descriptionImg.fluid : null
   return (
     <div className="bg-gray-300 lg:p-8 p-2">
       <div className="flex flex-col lg:flex-row mb-8">
@@ -46,7 +48,7 @@ function TourProgram({ program }) {
           dangerouslySetInnerHTML={{ __html: content }}
         />
         <div className="w-full lg:w-1/2 lg:pl-2">
-          <Image fluid={fluid} style={{ height: "300px" }} />
+          {fluid && <Image fluid={fluid} style={{ height: "300px" }} />}
         </div>
       </div>
     </div>
