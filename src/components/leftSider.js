@@ -69,6 +69,14 @@ export default function LeftSider({ toggleIsSidbarOpen, isSiderOpen }) {
                 Контакты
               </Link>
             </li>
+            <li className="w-full">
+              <Link
+                to="/qa"
+                className="block h-full py-2 text-center font-bold text-xl"
+              >
+                Вопросы и ответы
+              </Link>
+            </li>
             <li className="w-full flex justify-center mt-4">
               <a
                 href="https://www.facebook.com/EduTravel-1958334667515174/"

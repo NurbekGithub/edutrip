@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
         isSiderOpen={isSiderOpen}
         toggleIsSidbarOpen={toggleIsSidbarOpen}
       />
-      <main className="md:mx-12 mb-12 mt-16 bg-gray-200 m-1 pb-24 overflow-x-hidden">
+      <main className="md:mx-12 mb-12 mt-16 bg-gray-200 m-1 sm:pb-24 overflow-x-hidden">
         {children}
       </main>
       <RightSider />

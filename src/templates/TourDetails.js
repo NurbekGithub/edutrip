@@ -3,6 +3,7 @@ import { chunkArray } from "../utils/responsive"
 import Layout from "../components/layout"
 import Button from "../components/Button"
 import Image from "gatsby-image"
+import ReactMarkdown from "react-markdown"
 
 function TourCandy({ candy, imgFixed }) {
   return (
@@ -43,9 +44,9 @@ function TourProgram({ program }) {
         </div>
       </div>
       <div className="flex flex-col lg:flex-row">
-        <div
+        <ReactMarkdown
           className="w-full lg:w-1/2 lg:border-r-2 border-green-600 p-2"
-          dangerouslySetInnerHTML={{ __html: content }}
+          source={content}
         />
         <div className="w-full lg:w-1/2 lg:pl-2">
           {fluid && <Image fluid={fluid} style={{ height: "300px" }} />}

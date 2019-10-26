@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import { sectionHeight, TabletWidth } from "../utils/globalStyleObjects"
 import About from "../components/homePage/About"
 import Tours from "../components/homePage/Tours"
+import GiveMeEmail from "../components/homePage/GiveMeEmail"
 import Feedbacks from "../components/homePage/Feedbacks"
 import { chunkArray } from "../utils/responsive"
 import { useMediaPredicate } from "react-media-hook"
@@ -102,6 +103,7 @@ const IndexPage = () => {
         />
       </section>
       <Tours tours={tours} isUpcoming />
+      <GiveMeEmail />
       <About about={about} />
       <Feedbacks slides={slides} />
       <Contacts />
