@@ -59,8 +59,6 @@ function Feedbacks({ slides }) {
           </Slider>
         </CarouselProvider>
       </div>
-      {/* to register form */}
-      <form name="feedback" data-netlify="true" hidden />
     </section>
   )
 }

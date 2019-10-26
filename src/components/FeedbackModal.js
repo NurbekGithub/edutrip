@@ -12,6 +12,13 @@ export default function FeedbackModal({ minWidthTablet }) {
       >
         +Добавить отзыв
       </Button>
+      {/* hack to make form work with react-modal */}
+      <form name="feedback" data-netlify="true" hidden>
+        <input type="hidden" name="form-name" value="feedback" />
+        <input name="FIO" />
+        <input name="email" />
+        <textarea name="feedback" />
+      </form>
       <Modal
         isOpen={isModalOpen}
         style={{
