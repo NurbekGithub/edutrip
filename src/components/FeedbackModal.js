@@ -4,6 +4,11 @@ import Button from "../components/Button"
 
 export default function FeedbackModal({ minWidthTablet }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [state, setState] = useState({ FIO: "", email: "", feedback: "" })
+
+  function handleChange({ target: { name, value } }) {
+    setState(prevState => ({ ...prevState, [name]: value }))
+  }
   return (
     <>
       <Button
@@ -15,9 +20,9 @@ export default function FeedbackModal({ minWidthTablet }) {
       {/* hack to make form work with react-modal */}
       <form name="feedback" data-netlify="true" hidden>
         <input type="hidden" name="form-name" value="feedback" />
-        <input name="FIO" />
-        <input name="email" />
-        <textarea name="feedback" />
+        <input name="FIO" value={state.FIO} />
+        <input name="email" value={state.email} />
+        <textarea name="feedback" value={state.feedback} />
       </form>
       <Modal
         isOpen={isModalOpen}
@@ -49,6 +54,8 @@ export default function FeedbackModal({ minWidthTablet }) {
               className="w-full mb-4 appearance-none bg-gray-200 text-gray-700 border border-gray-200 py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               placeholder="ФИО"
               name="FIO"
+              value={state.FIO}
+              onChange={handleChange}
               required
             />
             <input
@@ -56,12 +63,16 @@ export default function FeedbackModal({ minWidthTablet }) {
               placeholder="e-mail"
               type="email"
               name="email"
+              value={state.email}
+              onChange={handleChange}
             />
             <textarea
               className="w-full mb-4 appearance-none bg-gray-200 text-gray-700 border border-gray-200 py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               placeholder="отзыв"
               name="feedback"
               required
+              value={state.feedback}
+              onChange={handleChange}
               rows={5}
             />
             <button
