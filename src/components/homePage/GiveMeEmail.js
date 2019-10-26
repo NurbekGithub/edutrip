@@ -12,7 +12,7 @@ export default function GiveMeEmail() {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "email", state }),
+      body: encode({ "form-name": "email", ...state }),
     })
       .then(() => alert("Success!"))
       .catch(error => alert(error))
@@ -27,6 +27,7 @@ export default function GiveMeEmail() {
       </h3>
       <form
         onSubmit={handleSubmit}
+        data-netlify="true"
         // name="email"
         // data-netlify="true"
         // data-netlify-honeypot="bot-field"
