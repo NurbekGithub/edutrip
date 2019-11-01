@@ -1,5 +1,5 @@
 import React from "react"
-import { FaFacebookF, FaInstagram, FaVk } from "react-icons/fa"
+import { FaFacebookF, FaInstagram, FaVk, FaYoutube } from "react-icons/fa"
 
 export default function RightSider() {
   return (
@@ -22,6 +22,12 @@ export default function RightSider() {
           className="py-2 text-gray-500 hover:text-teal-400"
         >
           <FaVk />
+        </a>
+        <a
+          href="https://www.youtube.com/channel/UCVJAFGW-PCAJ4tjg83PEFig"
+          className="py-2 text-gray-500 hover:text-teal-400"
+        >
+          <FaYoutube />
         </a>
       </div>
     </aside>

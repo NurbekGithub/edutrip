@@ -1,6 +1,6 @@
 import React from "react"
 import { Slider } from "react-burgers"
-import { FaFacebookF, FaInstagram, FaVk } from "react-icons/fa"
+import { FaFacebookF, FaInstagram, FaVk, FaYoutube } from "react-icons/fa"
 import { Link } from "gatsby"
 
 export default function LeftSider({ toggleIsSidbarOpen, isSiderOpen }) {
@@ -95,6 +95,12 @@ export default function LeftSider({ toggleIsSidbarOpen, isSiderOpen }) {
                 className="py-2 text-white-500 mx-3 hover:text-teal-400"
               >
                 <FaVk />
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCVJAFGW-PCAJ4tjg83PEFig"
+                className="py-2 text-white-500 mx-3 hover:text-teal-400"
+              >
+                <FaYoutube />
               </a>
             </li>
           </ul>
