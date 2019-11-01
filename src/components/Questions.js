@@ -17,7 +17,7 @@ function Question({ node }) {
   return (
     <AccordionItem className="mb-4 sm:mb-8">
       <AccordionItemHeading>
-        <AccordionItemButton className="bg-white accordion__button flex p-4 justify-between items-center">
+        <AccordionItemButton className="bg-white font-bold accordion__button flex p-4 justify-between items-center">
           {question}
         </AccordionItemButton>
       </AccordionItemHeading>
