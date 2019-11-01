@@ -7,7 +7,7 @@ import Questions from "../components/Questions"
 const ToursPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulQuestion {
+      allContentfulQuestion(sort: { fields: order, order: ASC }) {
         nodes {
           question
           childContentfulQuestionAnswerTextNode {

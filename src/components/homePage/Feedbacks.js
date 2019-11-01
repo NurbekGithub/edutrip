@@ -48,6 +48,7 @@ function Feedbacks({ slides }) {
                     <Feedback
                       key={idx}
                       name={feed.name}
+                      feedbackTime={feed.feedbackTime}
                       updatedAt={feed.updatedAt}
                       text={feed.feedbackText.feedbackText}
                       imgFluid={feed.userImage.fluid}

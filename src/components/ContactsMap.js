@@ -6,10 +6,8 @@ const mapStyle = {
   overflow: "hidden",
 }
 
-export default function ContactsMap() {
-  const LAT = 51.1308
-  const LON = 71.4347
-  const position = [LAT, LON]
+export default function ContactsMap({ point }) {
+  const position = [point.lat, point.lon]
   if (typeof window !== "undefined") {
     return (
       <div style={mapStyle}>

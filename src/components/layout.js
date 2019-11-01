@@ -6,7 +6,6 @@ import Footer from "./footer"
 import "./layout.css"
 import LeftSider from "./leftSider"
 import RightSider from "./rightSider"
-import CallButton from "./callButton"
 
 const Layout = ({ children }) => {
   const [isSiderOpen, setIsSiderOpen] = useState(false)

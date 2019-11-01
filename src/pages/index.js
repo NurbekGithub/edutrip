@@ -20,11 +20,23 @@ const IndexPage = () => {
           url
         }
       }
+      contentfulContact {
+        contacts {
+          name
+          telephone
+        }
+        ourLocation
+        point {
+          lat
+          lon
+        }
+      }
       allContentfulFeedbackSecond(sort: { fields: id, order: DESC }) {
         edges {
           node {
             name
             updatedAt
+            feedbackTime
             userImage {
               fluid(maxWidth: 500) {
                 ...GatsbyContentfulFluid
@@ -77,6 +89,7 @@ const IndexPage = () => {
   const feedbacks = data.allContentfulFeedbackSecond.edges
   const bgVideoURL = data.contentfulAsset.file.url
   const about = data.contentfulAbout
+  const contentfulContact = data.contentfulContact
 
   // 2 slides in a row
   const FEEDBACK_IN_SLIDE = minWidthTablet ? 2 : 1
@@ -106,7 +119,7 @@ const IndexPage = () => {
       <GiveMeEmail />
       <About about={about} />
       <Feedbacks slides={slides} />
-      <Contacts />
+      <Contacts contentfulContact={contentfulContact} />
     </Layout>
   )
 }

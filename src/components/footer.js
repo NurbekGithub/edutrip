@@ -8,11 +8,11 @@ export default function Footer() {
     query {
       contentfulContact {
         tel
-      }   
+      }
     }
   `)
 
-  const tel = data.contentfulContact.tel;
+  const tel = data.contentfulContact.tel
   return (
     <footer className="fixed bottom-0 h-12 px-12 flex items-center justify-between w-full text-teal-400 text-sm bg-white">
       {isMobile && (
@@ -24,7 +24,7 @@ export default function Footer() {
         </a>
       )}
       <div>
-        <span className="font-bold">ПН-ПТ</span> &nbsp; С 10:00 ДО 19:00
+        <span className="font-bold">ПН-ПТ</span> &nbsp; С 9:00 ДО 19:00
       </div>
     </footer>
   )

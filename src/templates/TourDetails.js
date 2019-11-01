@@ -59,29 +59,43 @@ function TourProgram({ program }) {
 export default function TourDetails({ pageContext }) {
   const { tourCandies, tourPrograms } = pageContext.tour
   const TOUR_CANDIES_IN_ROW = 3
-  const chunckedTourCandies = chunkArray(tourCandies, TOUR_CANDIES_IN_ROW)
+  const chunckedTourCandies =
+    tourCandies && chunkArray(tourCandies, TOUR_CANDIES_IN_ROW)
   return (
     <Layout>
       <div className="container mx-auto py-8">
-        <h2 className="lg:text-4xl text-2xl my-8 font-extrabold">ФИШКИ ТУРА</h2>
-        {chunckedTourCandies.map((tourCandiesRow, idx) => (
-          <div className="flex justyfy-between" key={idx}>
-            {tourCandiesRow.map((tourCandy, candyIdx) => {
-              const { candy, img } = tourCandy
-              return (
-                <div key={candyIdx} className={`w-1/${TOUR_CANDIES_IN_ROW}`}>
-                  <TourCandy candy={candy} imgFixed={img.fixed} />
-                </div>
-              )
-            })}
-          </div>
-        ))}
-        <h2 className="lg:text-4xl text-2xl my-8 font-extrabold">
-          ПРОГРАММА ТУРА
-        </h2>
-        {tourPrograms.map((program, idx) => (
-          <TourProgram key={idx} program={program} />
-        ))}
+        {tourCandies && (
+          <>
+            <h2 className="lg:text-4xl text-2xl my-8 font-extrabold">
+              ФИШКИ ТУРА
+            </h2>
+            {chunckedTourCandies.map((tourCandiesRow, idx) => (
+              <div className="flex justyfy-between" key={idx}>
+                {tourCandiesRow.map((tourCandy, candyIdx) => {
+                  const { candy, img } = tourCandy
+                  return (
+                    <div
+                      key={candyIdx}
+                      className={`w-1/${TOUR_CANDIES_IN_ROW}`}
+                    >
+                      <TourCandy candy={candy} imgFixed={img.fixed} />
+                    </div>
+                  )
+                })}
+              </div>
+            ))}
+          </>
+        )}
+        {tourPrograms && (
+          <>
+            <h2 className="lg:text-4xl text-2xl my-8 font-extrabold">
+              ПРОГРАММА ТУРА
+            </h2>
+            {tourPrograms.map((program, idx) => (
+              <TourProgram key={idx} program={program} />
+            ))}
+          </>
+        )}
       </div>
     </Layout>
   )
