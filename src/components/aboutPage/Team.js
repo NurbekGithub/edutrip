@@ -11,7 +11,7 @@ export default function Team({ chunkedMembers }) {
         return (
           <div
             key={idx}
-            className="flex -mx-8 lg:flex-row flex-col justify-center items-center lg:items-stretch lg:justify-start"
+            className="flex -mx-8 lg:-mx-4 lg:flex-row flex-col justify-center items-center lg:items-stretch lg:justify-start"
           >
             {membersRow.map((member, memberIdx) => {
               const { picture, fullName, description, position } = member

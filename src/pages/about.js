@@ -3,7 +3,11 @@ import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { chunkArray } from "../utils/responsive"
-import { sectionHeight, TabletWidth } from "../utils/globalStyleObjects"
+import {
+  sectionHeight,
+  TabletWidth,
+  DesktopWidth,
+} from "../utils/globalStyleObjects"
 import About from "../components/aboutPage/About"
 import Team from "../components/aboutPage/Team"
 import Img from "gatsby-image"
@@ -41,14 +45,15 @@ const AboutPage = () => {
       }
     }
   `)
+  const minWidthTablet = useMediaPredicate(`(min-width: ${TabletWidth}px)`)
+  const minWidthDesktop = useMediaPredicate(`(min-width: ${DesktopWidth}px)`)
 
-  const MEMBER_IN_ROW = 3
+  const MEMBER_IN_ROW = minWidthDesktop ? 4 : 3
   const members = data.allContentfulMember.nodes
   const chunkedMembers = chunkArray(members, MEMBER_IN_ROW)
   const bgImageFluid = data.contentfulAsset.fluid
   const about = data.contentfulAbout
 
-  const minWidthTablet = useMediaPredicate(`(min-width: ${TabletWidth}px)`)
   return (
     <Layout>
       <SEO title="О нас" />

@@ -28,7 +28,7 @@ export default function MemberCard(props) {
     )
   }
   return (
-    <div style={wrapperStyle} className="mx-8">
+    <div style={wrapperStyle} className="mx-8 lg:mx-4">
       <Img fluid={imgFluid} style={imageStyle} className="mb-4" />
       <p className="text-2xl font-thin mb-4">{fullName}</p>
       <p className="text-sm font-bold mb-4">{position}</p>

@@ -11,7 +11,7 @@ const ToursPage = () => {
   const minWidthTablet = useMediaPredicate(`(min-width: ${TabletWidth}px)`)
   const data = useStaticQuery(graphql`
     query {
-      allContentfulUpcomingTours(sort: { fields: id, order: DESC }) {
+      allContentfulUpcomingTours(sort: { fields: order, order: ASC }) {
         edges {
           node {
             slug

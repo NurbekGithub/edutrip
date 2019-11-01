@@ -4,3 +4,4 @@ export const sectionHeight = {
 
 export const MobileWidth = 640
 export const TabletWidth = 1024
+export const DesktopWidth = 1280
