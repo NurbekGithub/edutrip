@@ -2,6 +2,7 @@ import React from "react"
 import { Slider } from "react-burgers"
 import { FaFacebookF, FaInstagram, FaVk, FaYoutube } from "react-icons/fa"
 import { Link } from "gatsby"
+import { OutboundLink } from "gatsby-plugin-google-analytics"
 
 export default function LeftSider({ toggleIsSidbarOpen, isSiderOpen }) {
   const isOpenClass = `${isSiderOpen ? "open" : ""}`
@@ -78,30 +79,30 @@ export default function LeftSider({ toggleIsSidbarOpen, isSiderOpen }) {
               </Link>
             </li>
             <li className="w-full flex justify-center mt-4">
-              <a
+              <OutboundLink
                 href="https://www.facebook.com/EduTravel-1958334667515174/"
                 className="py-2 text-white-500 mx-3 hover:text-teal-400"
               >
                 <FaFacebookF />
-              </a>
-              <a
+              </OutboundLink>
+              <OutboundLink
                 href="https://instagram.com/edutravel_kz?igshid=1q5jmb15pc0jm"
                 className="py-2 text-white-500 mx-3 hover:text-teal-400"
               >
                 <FaInstagram />
-              </a>
-              <a
+              </OutboundLink>
+              <OutboundLink
                 href="https://vk.com/edutravelkz"
                 className="py-2 text-white-500 mx-3 hover:text-teal-400"
               >
                 <FaVk />
-              </a>
-              <a
+              </OutboundLink>
+              <OutboundLink
                 href="https://www.youtube.com/channel/UCVJAFGW-PCAJ4tjg83PEFig"
                 className="py-2 text-white-500 mx-3 hover:text-teal-400"
               >
                 <FaYoutube />
-              </a>
+              </OutboundLink>
             </li>
           </ul>
         </div>
