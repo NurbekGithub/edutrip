@@ -318,6 +318,36 @@ footer {
   }
 }
 
+.map-icon {
+  position: absolute;
+  width: 15%;
+}
+
+.map-icon-1 {
+  top: 12px;
+  right: 50%;
+}
+.map-icon-2 {
+  top: 40%;
+  right: 40%;
+}
+.map-icon-3 {
+  top: 50%;
+  right: 10%;
+}
+.map-icon-4 {
+  top: 30%;
+  right: 70%;
+}
+.map-icon-5 {
+  top: 70%;
+  right: 70%;
+}
+.map-icon-6 {
+  top: 65%;
+  right: 5%;
+}
+
 .leaflet-container {
   height: 400px;
   width: 100%;
