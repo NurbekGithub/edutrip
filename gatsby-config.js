@@ -5,7 +5,7 @@ dotenv.config()
 module.exports = {
   siteMetadata: {
     title: `Edu travel`,
-    description: `Поездки`,
+    description: `Поездки, Туризм, Путешествие`,
     author: `@nurbek`,
   },
   plugins: [
@@ -63,6 +63,13 @@ module.exports = {
       resolve: "gatsby-plugin-react-leaflet",
       options: {
         linkStyles: true, // (default: true) Enable/disable loading stylesheets via CDN
+      },
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Disable the loading spinner.
+        showSpinner: false,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
